@@ -60,7 +60,7 @@ services:
       retries: 5
       start_period: 1m
     volumes:
-      - /usr/local/tomcat/alf_data
+      - repository_data:/usr/local/tomcat/alf_data
     extends:
       file: commons/base.yaml
       service: alfresco
@@ -276,3 +276,7 @@ services:
     extends:
       file: commons/base.yaml
       service: sync-service
+
+volumes:
+  repository_data:
+    driver: local
