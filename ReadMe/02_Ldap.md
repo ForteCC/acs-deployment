@@ -18,102 +18,21 @@ make changes in the docker compose file and add in volume
 | `:ro` | This means **read-only**. The container can read the file but **cannot modify it**. This adds safety so your config file doesn’t accidentally get altered. |
 
 
+ **Restart the container** using Docker Compose:
 
+
+```bash
+docker-compose restart alfresco
+```
+
+- This will restart the specific service (in this case, `alfresco`) and **reload the new properties file**.
+---
 
 - Now add following code:
-```bash
-authentication.chain=alfrescoNtlm1:alfrescoNtlm,ldap-ad1:ldap-ad  
-ldap.authentication.active=true  
-ldap.authentication.allowGuestLogin=true  
-ldap.authentication.userNameFormat=%[s@xxx.x](mailto:s@pucsl.lk)x  
-ldap.authentication.java.naming.factory.initial=com.sun.jndi.ldap.LdapCtxFactory  
-ldap.authentication.java.naming.provider.url=ldap://[xxx](mailto:s@pucsl.lk)[.](http://pucsl.lk:389/)[xx](mailto:s@pucsl.lk)[:389](http://pucsl.lk:389/)  
-ldap.authentication.java.naming.security.authentication=simple  
-ldap.authentication.escapeCommasInBind=false  
-ldap.authentication.escapeCommasInUid=false  
-ldap.authentication.defaultAdministratorUserNames=Administrator
-
-ldap.synchronization.active=true  
-ldap.synchronization.java.naming.security.principal=[administrator@](mailto:administrator@pucsl.lk)[xxx](mailto:s@pucsl.lk)[.](mailto:administrator@pucsl.lk)[xx](mailto:s@pucsl.lk)  
-ldap.synchronization.java.naming.security.credentials=secret  
-ldap.synchronization.queryBatchSize=1000  
-ldap.synchronization.attributeBatchSize=1000  
-synchronization.synchronizeChangesOnly=false  
-synchronization.allowDeletions=true  
-synchronization.syncWhenMissingPeopleLogIn=true
-
-ldap.synchronization.groupQuery=objectclass\=group  
-ldap.synchronization.groupDifferentialQuery=(&(objectclass\=group)(!(modifyTimestamp<\={0})))
-
-ldap.synchronization.personQuery=(&(objectclass\=user)(userAccountControl\:1.2.840.113556.1.4.803\:\=512)(|(ou=[xxx](mailto:s@pucsl.lk),dc=[xxx](mailto:s@pucsl.lk),dc=[xx](mailto:s@pucsl.lk))(ou=[xxx](mailto:s@pucsl.lk),dc=[xxx](mailto:s@pucsl.lk),dc=[xx](mailto:s@pucsl.lk))))
-
-ldap.synchronization.personDifferentialQuery=(&(objectclass\=user)(userAccountControl\:1.2.840.113556.1.4.803\:\=512)(|(ou=[xxx](mailto:s@pucsl.lk),dc=[xxx](mailto:s@pucsl.lk),dc=[xxx](mailto:s@pucsl.lk))(ou=[xxx](mailto:s@pucsl.lk),dc=[xxx](mailto:s@pucsl.lk),dc=[xxx](mailto:s@pucsl.lk)))(!(modifyTimestamp<\={0})))
-
-ldap.synchronization.groupSearchBase=ou\=[xxx](mailto:s@pucsl.lk),dc\=[xxx](mailto:s@pucsl.lk),dc\=[xxx](mailto:s@pucsl.lk)
-
-ldap.synchronization.userSearchBase=dc\=[xxx](mailto:s@pucsl.lk),dc\=[xxx](mailto:s@pucsl.lk)
-
-ldap.synchronization.modifyTimestampAttributeName=modifyTimestamp  
-ldap.synchronization.timestampFormat=yyyyMMddHHmmss'.0Z'  
-ldap.synchronization.userIdAttributeName=sAMAccountName  
-ldap.synchronization.userFirstNameAttributeName=givenName  
-ldap.synchronization.userEmailAttributeName=mail  
-ldap.synchronization.defaultHomeFolderProvider=largeHomeFolderProvider  
-ldap.synchronization.groupDisplayNameAttributeName=displayName  
-ldap.synchronization.groupType=group  
-ldap.synchronization.personType=user  
-ldap.synchronization.groupMemberAttributeName=member  
-ldap.synchronization.enableProgressEstimation=true
-```
 
 
-```bash
-authentication.chain=alfrescoNtlm1:alfrescoNtlm,ldap-ad1:ldap-ad
 
-ldap.authentication.active=true
-ldap.authentication.allowGuestLogin=false
-ldap.authentication.userNameFormat=samaccountname=%s,OU=Users,OU=Tap\ Electric,DC=tapelectric,DC=local
-ldap.authentication.java.naming.factory.initial=com.sun.jndi.ldap.LdapCtxFactory
-ldap.authentication.java.naming.provider.url=ldap://10.20.102.10:389
-ldap.authentication.java.naming.security.authentication=simple
-ldap.authentication.java.naming.security.principal=samAccountName=mjalan,OU=Users,OU=Tap\ Electric,DC=tapelectric,DC=local
-ldap.authentication.java.naming.security.credentials=ComplexHai@2692000
-ldap.authentication.escapeCommasInBind=false
-ldap.authentication.escapeCommasInUid=false
-ldap.authentication.defaultAdministratorUserNames=admin
 
-ldap.synchronization.active=true
-ldap.synchronization.java.naming.security.principal=samAccountName=mjalan,OU=Users,OU=Tap\ Electric,DC=tapelectric,DC=local
-ldap.synchronization.java.naming.security.credentials=ComplexHai@2692000
-ldap.synchronization.queryBatchSize=1000
-ldap.synchronization.attributeBatchSize=1000
-synchronization.synchronizeChangesOnly=false
-synchronization.allowDeletions=true
-synchronization.syncWhenMissingPeopleLogIn=true
-
-ldap.synchronization.groupQuery=objectclass\=group
-ldap.synchronization.groupDifferentialQuery=(&(objectclass\=group)(!(modifyTimestamp<\={0})))
-
-ldap.synchronization.personQuery=(&(objectclass\=user)(userAccountControl\:1.2.840.113556.1.4.803\:\=512)(OU=Users,OU=Tap Electric,DC=tapelectric,DC=local))
-ldap.synchronization.personDifferentialQuery=(&(objectclass\=user)(userAccountControl\:1.2.840.113556.1.4.803\:\=512)(OU=Users,OU=Tap Electric,DC=tapelectric,DC=local)(!(modifyTimestamp<\={0})))
-
-ldap.synchronization.groupSearchBase=OU\=Groups,DC\=tapelectric,DC\=local
-ldap.synchronization.userSearchBase=OU\=Users,OU\=Tap Electric,DC\=tapelectric,DC\=local
-
-ldap.synchronization.modifyTimestampAttributeName=modifyTimestamp
-ldap.synchronization.timestampFormat=yyyyMMddHHmmss'.0Z'
-ldap.synchronization.userIdAttributeName=samAccountName
-ldap.synchronization.groupIdAttributeName=samAccountName
-ldap.synchronization.userFirstNameAttributeName=givenName
-ldap.synchronization.userEmailAttributeName=userprincipalname
-ldap.synchronization.defaultHomeFolderProvider=largeHomeFolderProvider
-ldap.synchronization.groupDisplayNameAttributeName=displayName
-ldap.synchronization.groupType=group
-ldap.synchronization.personType=user
-ldap.synchronization.groupMemberAttributeName=member
-ldap.synchronization.enableProgressEstimation=true
-
-```
 
 
 
@@ -307,52 +226,10 @@ CopyEdit
 
 --- 
 
-
-
-```
-authentication.chain=alfrescoNtlm1:alfrescoNtlm,ldap-ad1:ldap-ad
-
-ldap.authentication.active=true
-ldap.authentication.allowGuestLogin=false
-ldap.authentication.userNameFormat=samaccountname=%s,OU=Users,OU=Tap Electric,DC=tapelectric,DC=local
-
-ldap.authentication.java.naming.factory.initial=com.sun.jndi.ldap.LdapCtxFactory
-ldap.authentication.java.naming.provider.url=ldap://10.20.102.10:389
-ldap.authentication.java.naming.security.authentication=simple
-
-ldap.authentication.java.naming.security.principal=CN=Mitesh Jalan,OU=Users,OU=Tap Electric,DC=tapelectric,DC=local
-ldap.authentication.java.naming.security.credentials=ComplexHai@2692000
-
-ldap.authentication.escapeCommasInBind=false
-ldap.authentication.escapeCommasInUid=false
-ldap.authentication.defaultAdministratorUserNames=admin
-
-ldap.synchronization.active=true
-ldap.synchronization.java.naming.security.principal=CN=Mitesh Jalan,OU=Users,OU=Tap Electric,DC=tapelectric,DC=local
-ldap.synchronization.java.naming.security.credentials=ComplexHai@2692000
-ldap.synchronization.queryBatchSize=1000
-ldap.synchronization.attributeBatchSize=1000
-synchronization.synchronizeChangesOnly=false
-synchronization.allowDeletions=true
-synchronization.syncWhenMissingPeopleLogIn=true
-
-
-ldap.synchronization.personQuery=(&(objectclass\=user)(userAccountControl\:1.2.840.113556.1.4.803\:\=512)(OU=Users,OU=Tap Electric,DC=tapelectric,DC=local))
-ldap.synchronization.personDifferentialQuery=(&(objectclass\=user)(userAccountControl\:1.2.840.113556.1.4.803\:\=512)(OU=Users,OU=Tap Electric,DC=tapelectric,DC=local)(!(modifyTimestamp<\={0})))
-
-ldap.synchronization.userSearchBase=OU\=Users,OU\=Tap Electric,DC\=tapelectric,DC\=local
-
-ldap.synchronization.modifyTimestampAttributeName=modifyTimestamp
-ldap.synchronization.timestampFormat=yyyyMMddHHmmss'.0Z'
-ldap.synchronization.userIdAttributeName=samAccountName
-ldap.synchronization.userFirstNameAttributeName=givenName
-ldap.synchronization.userEmailAttributeName=userprincipalname
-ldap.synchronization.defaultHomeFolderProvider=largeHomeFolderProvider
-ldap.synchronization.personType=user
-ldap.synchronization.enableProgressEstimation=true
-```
 last checked file
+Reff:
 https://connect.hyland.com/t5/alfresco-forum/ldap-ad-subsystem-sync-error/td-p/109244
+
 
 ```yml
 
