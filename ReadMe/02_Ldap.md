@@ -1,5 +1,25 @@
 - To connect to ldap go to the properties file at:
-  /usr/local/tomcat/shared/classes/
+/usr/local/tomcat/shared/classes/alfresco-global.properties
+
+make changes in the docker compose file and add in volume
+- ./config/alfresco-global.properties:/usr/local/tomcat/shared/classes/alfresco-global.properties:ro
+
+
+|                                       |                                                                                                                                        |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `./config/alfresco-global.properties` | This is the **source file path** on your **host machine** (relative to the directory where your `docker-compose.yml` file is located). |
+
+|   |   |
+|---|---|
+|`/usr/local/tomcat/shared/classes/alfresco-global.properties`|This is the **target path** inside the **Alfresco container**. Alfresco will load this file during startup to read custom configurations.|
+
+|       |                                                                                                                                                            |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `:ro` | This means **read-only**. The container can read the file but **cannot modify it**. This adds safety so your config file doesn’t accidentally get altered. |
+
+
+
+
 - Now add following code:
 ```bash
 authentication.chain=alfrescoNtlm1:alfrescoNtlm,ldap-ad1:ldap-ad  
@@ -334,7 +354,8 @@ ldap.synchronization.enableProgressEstimation=true
 last checked file
 https://connect.hyland.com/t5/alfresco-forum/ldap-ad-subsystem-sync-error/td-p/109244
 
-```
+```yml
+
 authentication.chain=alfrescoNtlm1:alfrescoNtlm,ldap-ad1:ldap-ad
 
 ldap.authentication.active=true

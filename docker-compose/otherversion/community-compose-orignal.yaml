@@ -1,9 +1,15 @@
 # This Docker Compose file will spin up an ACS community installation on a local host.
-# The orignal one does not save the data in local machine, this one does.
-
+# It requires at least 6GB of memory available to distribute among containers.
+#
+# For performance tuning, increase each container mem_limit and give a percentage of
+# it to the JVM. Use either the -Xms,-Xmx flags or the newly added flags in
+# java 10+: -XX:MaxRAMPercentage and -XX:MinRAMPercentage.
+# More details here:
+# https://www.oracle.com/technetwork/java/javase/10-relnote-issues-4108729.html
+#
 services:
   alfresco:
-    image: docker.io/alfresco/alfresco-content-repository-community:23.4.1
+    image: docker.io/alfresco/alfresco-content-repository-community:25.1.0
     mem_limit: 1900m
     environment:
       JAVA_TOOL_OPTIONS: >-

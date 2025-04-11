@@ -52,6 +52,7 @@ services:
       start_period: 1m
     volumes:
       - /usr/local/tomcat/alf_data
+      - ./config/alfresco-global.properties:/usr/local/tomcat/shared/classes/alfresco-global.properties:ro
     extends:
       file: commons/base.yaml
       service: alfresco
