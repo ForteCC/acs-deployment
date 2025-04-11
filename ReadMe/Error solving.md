@@ -48,10 +48,6 @@ JAVA_OPTS: >-
 
 /home/ubuntu/alfresco-content-app/node_modules/table/dist/src/schemas/config.json
 
----
-docker-compose-solr6-1
-
-2025-04-11 17:16:11.622 WARN (Thread-11) [ x:alfresco] o.a.s.c.Config XML parse warning in "solrres:/solrconfig.xml", line 1858, column 88: Include operation failed, reverting to fallback. Resource error reading file as XML (href='solrconfig_insight.xml'). Reason: Can't find resource 'solrconfig_insight.xml' in classpath or '/opt/alfresco-search-services/solrhome/alfresco'
 
 
 
