@@ -43,10 +43,20 @@ JAVA_OPTS: >-
 
 ```
 ---
+2025-04-11 17:16:11.622 WARN (Thread-11) [ x:alfresco] o.a.s.c.Config XML parse warning in "solrres:/solrconfig.xml", line 1858, column 88: Include operation failed, reverting to fallback. Resource error reading file as XML (href='solrconfig_insight.xml'). Reason: Can't find resource 'solrconfig_insight.xml' in classpath or '/opt/alfresco-search-services/solrhome/alfresco'
 
-2025-04-10T20:14:59,012 [] ERROR [framework.webscripts.ResourceWebScriptGet] [http-nio-8080-exec-9] Exception 7c3c5db4-d957-4895-bc5d-b4d957a8953d. Request /alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-?relativePath=config.json executed by user admin returned status code 404 with message: 03100004 The entity with relativePath: config.json was not found. - Increase logging on org.alfresco.rest.framework.webscripts.ResourceWebScriptGet for stack trace.
 
-/home/ubuntu/alfresco-content-app/node_modules/table/dist/src/schemas/config.json
+opt/alfresco-search-service/solrhome/conf/solrconfig_insight.xml
+
+- The **Insight Engine** (which uses `solrconfig_insight.xml`) is **only available in the Alfresco Enterprise Edition**.
+
+- The **Insight Engine** (which uses `solrconfig_insight.xml`) is **only available in the Alfresco Enterprise Edition**.
+    
+- In the **Community Edition**, this feature is not active or needed.
+    
+- So if Solr is trying to load that file and can’t find it — and you're not using any Insight-related features — it's best to **just remove or comment out the include** from `solrconfig.xml`.
+
+---
 
 
 
