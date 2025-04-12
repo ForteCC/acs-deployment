@@ -3,7 +3,6 @@
 2. launch the community compose 
    ```bash
      docker-compose -f community-compose.yaml up
-
    ```
   
     Open your browser and check everything starts up correctly:

@@ -41,16 +41,44 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02_Ldap.md",
+                "file": "02_LDAP Configuration Guide.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02_Ldap"
+              "title": "02_LDAP Configuration Guide"
+            }
+          },
+          {
+            "id": "5503de49468f1efb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03. Linux command tools.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "03. Linux command tools"
+            }
+          },
+          {
+            "id": "1241938286589d32",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02_LDAP Configuration Guide.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "02_LDAP Configuration Guide"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -123,7 +151,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "01_intro.md",
+                "file": "02_LDAP Configuration Guide.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +161,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 01_intro"
+              "title": "Backlinks for 02_LDAP Configuration Guide"
             }
           },
           {
@@ -197,10 +225,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e1fbd62c1a98b6cf",
+  "active": "1241938286589d32",
   "lastOpenFiles": [
+    "03. Linux command tools.md",
+    "2025-04-11.md",
     "Error solving.md",
-    "02_Ldap.md",
+    "image-1.png",
+    "image.png",
+    "Untitled.md",
+    "Untitled 1.md",
+    "Untitled 2.md",
+    "Untitled.canvas",
+    "02_LDAP Configuration Guide.md",
+    "00_basic_dev_settings.md",
+    "Theory.md",
     "01_intro.md",
     "attachments/Pasted image 20250410163900.png",
     "attachments",
